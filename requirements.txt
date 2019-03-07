@@ -16,7 +16,7 @@ flask-sqlalchemy==2.3.2
 idna==2.8
 itsdangerous==1.1.0
 jinja2==2.10
-libstdcxx-ng==8.2.0
+libstdcxx-ng
 markupsafe==1.1.1
 multidict==4.5.2
 ncurses==6.1
