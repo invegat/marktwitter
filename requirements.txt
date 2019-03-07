@@ -19,12 +19,10 @@ jinja2==2.10
 markupsafe==1.1.1
 multidict==4.5.2
 oauthlib==3.0.1
-openssl
 pillow==5.4.1
 pip==19.0.1
 pycparser==2.19
 pyjwt==1.7.1
-pyopenssl==19.0.0
 pysocks==1.6.8
 python==3.6.6
 python-decouple==3.1
