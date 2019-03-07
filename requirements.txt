@@ -6,7 +6,6 @@ asn1crypto==0.24.0
 async-timeout==3.0.1
 basilica==0.2.5
 blinker==1.4
-ca-certificates
 certifi==2018.11.29
 cffi==1.12.2
 chardet==3.0.4
