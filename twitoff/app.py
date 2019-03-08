@@ -60,19 +60,19 @@ def create_app():
         DB.create_all()
         return render_template('base.html', title='DB Reset', users=[])
 
-    @app.route('/user/<username>', methods=['GET'])
-    def show(username):
-        (text, user) = get_tweets(username)
-        if user is None:
-            return text
-        return render_template('show.html', title='Tweets', user=user)
+    # @app.route('/user/<username>', methods=['GET'])
+    # def show(username):
+    #     (text, user) = get_tweets(username)
+    #     if user is None:
+    #         return text
+    #     return render_template('show.html', title='Tweets', user=user)
 
-    @app.route('/user/<username>', methods=['POST'])
-    def add_user(username):
-        (text, user) = add_twitter_user(username)
-        if user is None:
-            return text
-        return render_template('show.html', title='Tweets', user=user)
+    # @app.route('/user/<username>', methods=['POST'])
+    # def add_user(username):
+    #     (text, user) = add_twitter_user(username)
+    #     if user is None:
+    #         return text
+    #     return render_template('show.html', title='Tweets', user=user)
 
     @app.route('/user', methods=['POST'])
     @app.route('/user/<name>', methods=['GET'])
