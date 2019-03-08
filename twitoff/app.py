@@ -5,6 +5,12 @@ from .toy_data import toy_data
 from jinja2 import Environment, PackageLoader, select_autoescape
 from decouple import config
 from .twitter import add_twitter_user, get_tweets, add_or_update_user
+import io
+
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
+
 # from console_log import ConsoleLog
 
 # console = logging.getLogger('console')
@@ -17,6 +23,17 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = config('DATABASE_URL')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['ENV'] = config('FLASK_ENV')  # TODO change before deploying
+
+    if app.debug:
+        import chromelogger as console
+    
+        @app.after_request
+        def chromelogger(response):
+            header = console.get_header()
+            if header is not None:
+                response.headers.add(*header)
+            return response
+
     DB.init_app(app)
     # env = Environment(
     #     loader=PackageLoader('twitoff', 'templates'),
@@ -35,7 +52,11 @@ def create_app():
 
     @app.route('/reset')
     def reset():
-        DB.drop_all()
+        DB.session.rollback()
+
+        da = DB.drop_all()
+        # with f = open('log.txt', 'w'):
+        #     f.write(f'type drop_all {type(da)}')
         DB.create_all()
         return render_template('base.html', title='DB Reset', users=[])
 
