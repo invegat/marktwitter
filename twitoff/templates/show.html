@@ -1,0 +1,15 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - Posts</title>
+        {% else %}
+        <title>Welcome to Posts</title>
+        {% endif %}
+    </head>
+    <body>
+        <h1>{{ user.name }} Twitter Tweets</h1>
+        {% for tweet in user.tweets %}
+        <div><p>{{ tweet.text }}</p></div>
+        {% endfor %}
+    </body>
+</html>
